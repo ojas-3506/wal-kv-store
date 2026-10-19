@@ -24,6 +24,11 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
 enable_testing()
-add_executable(unit_tests tests/test_main.cpp)
+add_executable(unit_tests
+    tests/test_main.cpp
+    tests/test_crc32.cpp
+    src/crc32.cpp
+)
+target_include_directories(unit_tests PRIVATE include)
 target_link_libraries(unit_tests PRIVATE gtest_main)
 add_test(NAME unit_tests COMMAND unit_tests)
